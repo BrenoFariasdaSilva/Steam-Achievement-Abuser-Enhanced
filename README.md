@@ -47,7 +47,7 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 	- [Introduction](#introduction)
 	- [Requirements](#requirements)
 	- [Setup](#setup)
-		- [Clone the repository](#clone-the-repository)
+		- [Clone the Repository](#clone-the-repository)
 	- [Usage](#usage)
 	- [Results](#results)
 - [How does it work?](#how-does-it-work)
@@ -77,14 +77,12 @@ The code is organized as a Visual Studio/.NET solution with a native-wrapper lib
 
 ## Setup
 
-### Clone the repository
+### Clone the Repository
 
-1. Clone the repository with the following command:
-
-   ```bash
-   git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.git
-   cd Steam-Achievement-Abuser-Enhanced
-   ```
+```bash
+git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.git
+cd Steam-Achievement-Abuser-Enhanced
+```
 
 ## Usage
 
