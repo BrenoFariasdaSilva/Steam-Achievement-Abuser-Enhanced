@@ -8,8 +8,15 @@
   
 ---
 
-Project-Description.
-- Based on: https://github.com/gibbed/SteamAchievementManager
+Steam-Achievement-Abuser-Enhanced is an enhanced, automated fork of the original Steam Achievement Abuser / Steam Achievement Manager workflow. It automates the process of launching a small helper app that triggers achievements for games you own, so you don't have to manually open each title.
+
+Key features:
+- Three modes of operation: Manual (interactive), Auto (single automated run), and Multiple Runs (repeats the automated run on a schedule).
+- Uses a lightweight native wrapper library (`SAM.API.dll`) to communicate with Steam's local APIs.
+- Safe pacing: by default the tool keeps each helper app open for ~5 seconds and waits another ~5 seconds before starting the next game to reduce the chance of Steam instability.
+- A small `Makefile` is provided to build the projects and collect the built artifacts into `dist/` for easy packaging.
+
+Based on: https://github.com/gibbed/SteamAchievementManager
   
 ---
 
