@@ -159,6 +159,37 @@ When the run completes the helper app will have attempted to unlock achievements
 - The default pacing (5s open + 5s gap) is conservative to avoid triggering Steam crashes when processing many games; you can adjust it in Manual mode.
 - If you package artifacts for distribution, include `SAM.API.dll` plus the chosen runner exe(s).
 
+## Releases
+
+This project includes a packaging step that produces compressed release artifacts under the `releases/` directory. The packaging creates two logical groups of archives:
+
+- Binary bundles (executables):
+  - `Steam-Achievement-Abuser-Enhanced-Executables.zip` — A ZIP archive containing the runtime artifacts staged under the top-level folder `Steam Achievement Abuser Enhanced`. Includes `SAM.API.dll` and the helper/runner executables (App, Manual, Auto, Multiple Runs).
+  - `Steam-Achievement-Abuser-Enhanced-Executables.tar.gz` — A gzipped tar of the same staged folder (created when `tar`/`gzip` are available).
+  - `Steam-Achievement-Abuser-Enhanced-Executables.7z` / `.rar` — Optional 7z or RAR archives created only if the respective tools (`7z`, `rar`) are installed on the machine performing the packaging.
+
+- Source bundles:
+  - `Steam-Achievement-Abuser-Enhanced-Source-Code.zip` — ZIP archive of the repository source. When `git` is available the Makefile uses `git archive` to produce a clean archive from the current `HEAD`.
+  - `Steam-Achievement-Abuser-Enhanced-Source-Code.tar.gz` or `.tar` — Created when `gzip`/`tar` are available; on Windows the Makefile will fall back to a plain `.tar` if `gzip` is not present.
+
+How to inspect the produced archives:
+
+On Windows (PowerShell):
+```powershell
+ls releases
+# Unzip: Expand-Archive -Path releases\Steam-Achievement-Abuser-Enhanced-Executables.zip -DestinationPath .\out
+# List tar.gz: tar -tzf releases\Steam-Achievement-Abuser-Enhanced-Executables.tar.gz
+```
+
+On POSIX systems:
+```bash
+ls releases
+unzip -l releases/Steam-Achievement-Abuser-Enhanced-Executables.zip
+tar -tzf releases/Steam-Achievement-Abuser-Enhanced-Executables.tar.gz
+```
+
+If you'd like different archive naming (for example including a git short-hash or version tag) or additional exclusions (e.g., exclude `obj`, `bin`, `.vs` from the source bundle), tell me and I can update the Makefile accordingly.
+
 ## Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. If you have suggestions for improving the code, your insights will be highly welcome.
