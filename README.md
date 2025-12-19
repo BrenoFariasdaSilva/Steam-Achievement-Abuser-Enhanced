@@ -37,6 +37,7 @@ Project-Description.
 ## Table of Contents
 - [Steam-Achievement-Abuser-Enhanced. ](#steam-achievement-abuser-enhanced-)
 	- [Table of Contents](#table-of-contents)
+	- [Introduction](#introduction)
 - [How does it work?](#how-does-it-work)
 - [What is it?](#what-is-it)
 - [How to use:](#how-to-use)
@@ -47,6 +48,10 @@ Project-Description.
 	- [Collaborators](#collaborators)
 	- [License](#license)
 		- [Apache License 2.0](#apache-license-20)
+
+## Introduction
+
+Detailed project description.
 
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
