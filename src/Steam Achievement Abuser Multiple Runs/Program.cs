@@ -21,10 +21,10 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
         static void Main()
         {
             Console.SetWindowSize(140, 36);
-            Console.Title = "Steam Achievement Abuser Multiple Runs | Breno Farias da Silva";
-            Console.WriteLine("Starting Steam Achievement Abuser in multiple-runs automatic mode...");
-            Console.WriteLine("Based on: https://github.com/gibbed/SteamAchievementManager");
-
+            Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
+            Console.WriteLine("Starting Steam Achievement Abuser Enhanced");
+            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            Console.WriteLine();
             try
             {
                 _SteamClient = new Client();
@@ -44,6 +44,7 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
                     _Games.Clear();
                     AddGames();
                     Console.WriteLine($"Found {_Games.Count()} games. Running automatically...");
+                    Console.WriteLine();
                     StartAbuse();
                 }
                 catch (Exception ex)
