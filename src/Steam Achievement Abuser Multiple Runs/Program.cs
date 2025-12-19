@@ -15,6 +15,8 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
     {
         // Pause between games (ms)
         private static int pausebetweenabuse = 5000;
+        // Run/cycle counter (starts at 0, incremented before each cycle)
+        private static int runNumber = 0;
         private static Client _SteamClient = null;
         private static List<GameInfo> _Games = new List<GameInfo>();
 
@@ -41,9 +43,14 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
             {
                 try
                 {
+                    // increment the run counter and announce the cycle
+                    runNumber++;
+                    Console.WriteLine($"Run {runNumber}: starting cycle...");
+
                     _Games.Clear();
                     AddGames();
                     Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
+                    
                     // Estimate total time: keep each game open for pausebetweenabuse ms, then pausebetweenabuse ms gap
                     double estimatedHoursMulti = (_Games.Count * 2.0 * pausebetweenabuse) / 3600000.0;
                     Console.WriteLine($"Estimated total time to process {_Games.Count} games: {estimatedHoursMulti:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
@@ -62,7 +69,7 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
 
         static void StartAbuse()
         {
-            Console.WriteLine("Starting abuse (multiple runs)...");
+            Console.WriteLine($"Starting abuse (multiple runs) - Run {runNumber}...");
             int i = 1;
             foreach (var Game in _Games)
             {
