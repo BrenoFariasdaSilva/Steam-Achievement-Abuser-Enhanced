@@ -13,19 +13,43 @@ Based on [Steam Achievement Manager](https://github.com/gibbed/SteamAchievementM
 
 It automates launching a helper app that triggers achievements for games you own, removing the need to manually open each title while adding multiple execution strategies and build tooling.
 
-Key features:
-- Three modes of operation: Manual (interactive), Auto (single automated run), and Multiple Runs (repeats the automated run on a schedule).
-- Shows an estimated total runtime before an automated run based on the number of games and configured pacing.
-- Uses a lightweight native wrapper library (`SAM.API.dll`) to communicate with Steam's local APIs.
-- Safe pacing: by default the tool keeps each helper app open for ~5 seconds and waits another ~5 seconds before starting the next game to reduce the chance of Steam instability.
-- A small `Makefile` is provided to build the projects and collect the built artifacts into `dist/` for easy packaging.
-- A proper README with setup, usage, and contribution instructions.
+</div>
 
-Based on: https://github.com/gibbed/SteamAchievementManager
+### Key Features
+
+- **Three execution modes**
+  - **Manual**: interactive, configurable pacing before execution.
+  - **Auto**: single fully automated run with ETA calculation.
+  - **Multiple Runs**: automated looping mode with run counter and fixed cooldown between cycles.
+- **Estimated Total Runtime (ETA)** printed before execution, based on:
+  - number of games
+  - open duration per game
+  - cooldown between games
+- **Safe pacing by default**
+  - 5 seconds with the game open
+  - 5 seconds cooldown before the next game
+  - Designed to reduce Steam instability when processing large libraries.
+- **Improved console output**
+  - Clear headers
+  - Explicit “Enhanced” branding
+  - GitHub repository reference on startup.
+- **Makefile-based build system**
+  - Validates .NET installation
+  - Optionally installs the required .NET Framework
+  - Builds all projects
+  - Collects artifacts into `dist/`
+- **Deterministic release pipeline**
+  - Clean build directories before packaging
+  - Reproducible release outputs
+- **Cross-platform release packaging**
+  - `.zip`, `.tar.gz`, `.7z`, `.rar`
+  - Separate source-code and binary artifacts
+- **Cleaner repository hygiene**
+  - Proper `.gitignore`
+  - Updated LICENSE
+  - CONTRIBUTING guidelines included
   
 ---
-
-</div>
 
 <div align="center">
 
