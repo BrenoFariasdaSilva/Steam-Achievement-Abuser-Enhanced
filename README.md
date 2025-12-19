@@ -101,10 +101,26 @@ We thank the following people who contributed to this project:
 <table>
   <tr>
     <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/DDoS-Detector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+      <a href="https://github.com/BrenoFariasdaSilva" title="Breno Farias da Silva">
+        <img src="https://github.com/BrenoFariasdaSilva.png" width="100px;" alt="Breno Farias da Silva"/><br>
         <sub>
           <b>Breno Farias da Silva</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sa68ru/Steam-Achievement-Abuser" title="sa68ru">
+        <img src="https://github.com/sa68ru.png" width="100px;" alt="sa68ru"/><br>
+        <sub>
+          <b>sa68ru</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/4G0NYY/Steam-Achievement-Abuser" title="4G0NYY">
+        <img src="https://github.com/4G0NYY.png" width="100px;" alt="4G0NYY"/><br>
+        <sub>
+          <b>4G0NYY</b>
         </sub>
       </a>
     </td>
