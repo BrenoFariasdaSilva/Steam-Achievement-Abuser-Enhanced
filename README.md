@@ -63,7 +63,9 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 
 ## Introduction
 
-Detailed project description.
+This repository provides a small suite of tools that automate the process of completing achievements for games you own on Steam. It is intended for users who want to locally unlock achievements (for testing, correction, or convenience) and who understand the implications of touching Steam's local APIs. Use at your own risk.
+
+The code is organized as a Visual Studio/.NET solution with a native-wrapper library (`SAM.API`) and a set of small console apps that orchestrate achievement activation.
 
 ## Requirements
 
