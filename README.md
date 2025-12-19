@@ -33,6 +33,8 @@
 - [Done!](#done)
 - [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
 	- [How to compile:](#how-to-compile)
+	- [License](#license)
+		- [Apache License 2.0](#apache-license-20)
 
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
@@ -62,3 +64,9 @@ No Problem! After all, it's always more secure to compile a program yourself. In
 5. The Dotnet build-process should only take a few seconds. After that, you'll find a new Folder inside of your Directory called "bin". In there will be another folder called "Debug"
 6. In there are all the Executables you'll need! You will need "SAM.API.dll", "Steam Achievement Abuser App.exe" and "Steam Achievement Abuser.exe". You can delete the rest.
 7. Now simply open "Steam Achievement Abuser.exe" and it should work!
+
+## License
+
+### Apache License 2.0
+
+This project is licensed under the [Apache License 2.0](LICENSE). This license permits use, modification, distribution, and sublicense of the code for both private and commercial purposes, provided that the original copyright notice and a disclaimer of warranty are included in all copies or substantial portions of the software. It also requires a clear attribution back to the original author(s) of the repository. For more details, see the [LICENSE](LICENSE) file in this repository.
