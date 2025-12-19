@@ -33,6 +33,7 @@
 - [Done!](#done)
 - [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
 	- [How to compile:](#how-to-compile)
+	- [Contributing](#contributing)
 	- [License](#license)
 		- [Apache License 2.0](#apache-license-20)
 
@@ -64,6 +65,33 @@ No Problem! After all, it's always more secure to compile a program yourself. In
 5. The Dotnet build-process should only take a few seconds. After that, you'll find a new Folder inside of your Directory called "bin". In there will be another folder called "Debug"
 6. In there are all the Executables you'll need! You will need "SAM.API.dll", "Steam Achievement Abuser App.exe" and "Steam Achievement Abuser.exe". You can delete the rest.
 7. Now simply open "Steam Achievement Abuser.exe" and it should work!
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. If you have suggestions for improving the code, your insights will be highly welcome.
+In order to contribute to this project, please follow the guidelines below or read the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details on how to contribute to this project, as it contains information about the commit standards and the entire pull request process.
+Please follow these guidelines to make your contributions smooth and effective:
+
+1. **Set Up Your Environment**: Ensure you've followed the setup instructions in the [Setup](#setup) section to prepare your development environment.
+
+2. **Make Your Changes**:
+   - **Create a Branch**: `git checkout -b feature/YourFeatureName`
+   - **Implement Your Changes**: Make sure to test your changes thoroughly.
+   - **Commit Your Changes**: Use clear commit messages, for example:
+     - For new features: `git commit -m "FEAT: Add some AmazingFeature"`
+     - For bug fixes: `git commit -m "FIX: Resolve Issue #123"`
+     - For documentation: `git commit -m "DOCS: Update README with new instructions"`
+     - For refactorings: `git commit -m "REFACTOR: Enhance component for better aspect"`
+     - For snapshots: `git commit -m "SNAPSHOT: Temporary commit to save the current state for later reference"`
+   - See more about crafting commit messages in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+3. **Submit Your Contribution**:
+   - **Push Your Changes**: `git push origin feature/YourFeatureName`
+   - **Open a Pull Request (PR)**: Navigate to the repository on GitHub and open a PR with a detailed description of your changes.
+
+4. **Stay Engaged**: Respond to any feedback from the project maintainers and make necessary adjustments to your PR.
+
+5. **Celebrate**: Once your PR is merged, celebrate your contribution to the project!
 
 ## License
 
