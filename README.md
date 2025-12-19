@@ -51,7 +51,6 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 		- [Build (recommended)](#build-recommended)
 	- [Usage](#usage)
 	- [Results](#results)
-- [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
 	- [How to compile:](#how-to-compile)
 	- [Contributing](#contributing)
 	- [Collaborators](#collaborators)
@@ -124,10 +123,6 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 ## Results
 
 Discuss the results obtained in the project.
-
-# You don't trust my pre-compiled .exe?
-No Problem! After all, it's always more secure to compile a program yourself. In order to compile this little tool, you will need:
-1. [Dotnet SDK](https://download.visualstudio.microsoft.com/download/pr/cb56b18a-e2a6-4f24-be1d-fc4f023c9cc8/be3822e20b990cf180bb94ea8fbc42fe/dotnet-sdk-8.0.101-win-x64.exe)
 
 ## How to compile: 
 1. Install Dotnet
