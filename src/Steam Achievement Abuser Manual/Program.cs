@@ -20,10 +20,11 @@ namespace Steam_Achievement_Abuser_Manual
         static void Main()
         {
             Console.SetWindowSize(140, 36);
-            Console.Title = "Steam Achievement Abuser Manual | Breno Farias da Silva";
+            Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
             Console.WriteLine("   _____ _                                      _     _                                     _              _                         \n  / ____| |                           /\\       | |   (_)                                   | |       /\\   | |                        \n | (___ | |_ ___  __ _ _ __ ___      /  \\   ___| |__  _  _____   _____ _ __ ___   ___ _ __ | |_     /  \\  | |__  _   _ ___  ___ _ __ \n  \\___ \\| __/ _ \\/ _` | '_ ` _ \\    / /\\ \\ / __| '_ \\| |/ _ \\ \\ / / _ \\ '_ ` _ \\ / _ \\ '_ \\| __|   / /\\ \\ | '_ \\| | | / __|/ _ \\ '__|\n  ____) | ||  __/ (_| | | | | | |  / ____ \\ (__| | | | |  __/\\ V /  __/ | | | | |  __/ | | | |_   / ____ \\| |_) | |_| \\__ \\  __/ |   \n |_____/ \\__\\___|\\__,_|_| |_| |_| /_/    \\_\\___|_| |_|_|\\___| \\_/ \\___|_| |_| |_|\\___|_| |_|\\__| /_/    \\_\\_.__/ \\__,_|___/\\___|_|   \n");
             Console.WriteLine("Welcome to the Steam Achievement Abuser Manual by Breno Farias da Silva");
-            Console.WriteLine("Based on: https://github.com/gibbed/SteamAchievementManager");
+            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            Console.WriteLine();
             Console.WriteLine("Init...");
             try
             {
@@ -35,6 +36,7 @@ namespace Steam_Achievement_Abuser_Manual
             {
                 throw;
             }
+            Console.WriteLine();
             AddGames();
             Console.WriteLine($"Found {_Games.Count()} games...");
             Console.WriteLine("");
@@ -50,6 +52,7 @@ namespace Steam_Achievement_Abuser_Manual
             }
             Console.WriteLine("Press any key to start abusing Steam...");
             Console.ReadKey();
+            Console.WriteLine();
             StartAbuse();
             Console.ReadKey();
         }
