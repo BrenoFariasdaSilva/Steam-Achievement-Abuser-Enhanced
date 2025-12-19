@@ -9,6 +9,20 @@ DIST_DIR := dist
 # Default target
 all: build
 
+# Install .NET SDK
+install-dotnet:
+ifeq ($(OS), Windows)
+	@where dotnet >NUL 2>&1 || ( \
+		echo Installing .NET SDK... && \
+		powershell -Command "iwr -useb https://dot.net/v1/dotnet-install.ps1 | iex" && \
+		echo .NET SDK installed. Please restart your terminal \
+	)
+else ifeq ($(OS), Darwin)
+	@dotnet --version >/dev/null 2>&1 || brew install --cask dotnet-sdk
+else
+	@dotnet --version >/dev/null 2>&1 || curl -sSL https://dot.net/v1/dotnet-install.sh | bash
+endif
+
 # Check if .NET SDK is installed
 check-dotnet:
 ifeq ($(OS), Windows)
@@ -18,7 +32,7 @@ else
 endif
 
 # Build the .NET project
-build: check-dotnet
+build: install-dotnet check-dotnet
 	cd src && dotnet build
 	@echo Copying build artifacts to $(DIST_DIR)...
 ifeq ($(OS), Windows)
@@ -40,4 +54,4 @@ else
 	@rm -rf $(DIST_DIR)
 endif
 
-.PHONY: all build clean check-dotnet
+.PHONY: all build clean check-dotnet install-dotnet
