@@ -9,8 +9,16 @@ DIST_DIR := dist
 # Default target
 all: build
 
+# Check if .NET SDK is installed
+check-dotnet:
+ifeq ($(OS), Windows)
+	@where dotnet >NUL 2>&1 || (echo Error: .NET SDK is not installed. && exit 1)
+else
+	@dotnet --version > /dev/null 2>&1 || (echo Error: .NET SDK is not installed. && exit 1)
+endif
+
 # Build the .NET project
-build:
+build: check-dotnet
 	cd src && dotnet build
 	@echo Copying build artifacts to $(DIST_DIR)...
 ifeq ($(OS), Windows)
@@ -32,4 +40,4 @@ else
 	@rm -rf $(DIST_DIR)
 endif
 
-.PHONY: all build clean
+.PHONY: all build clean check-dotnet
