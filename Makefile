@@ -44,8 +44,13 @@ else
 	@rm -rf $(DIST_DIR) src/bin
 endif
 
+
 build: prebuild-clean install-dotnet check-dotnet
 	cd src && dotnet build
+	@$(MAKE) copy-artifacts
+
+# Copy built artifacts into $(DIST_DIR)
+copy-artifacts:
 	@echo Copying build artifacts to $(DIST_DIR)...
 ifeq ($(OS), Windows)
 	@if not exist $(DIST_DIR) mkdir $(DIST_DIR)
