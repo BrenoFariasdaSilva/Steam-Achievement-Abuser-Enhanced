@@ -94,6 +94,31 @@ else
 		rm -rf $$staging
 endif
 
+# Package repository source code into its own archive(s)
+package-source: prepare-releases
+	@echo Packaging source code into '$(PKG_DIR)'...
+
+
+ifeq ($(OS), Windows)
+	@powershell -NoProfile -Command "$$pkg = '$(PKG_DIR)'; $$base = 'Steam-Achievement-Abuser-Enhanced-Source-Code'; $$staging = Join-Path $$pkg $$base; if (Test-Path $$staging) { Remove-Item -Recurse -Force $$staging -ErrorAction SilentlyContinue }; New-Item -ItemType Directory -Path $$staging -Force | Out-Null; if (Get-Command git -ErrorAction SilentlyContinue) { & git archive --format=zip -o (Join-Path $$pkg ($$base + '.zip')) HEAD; if (Get-Command gzip -ErrorAction SilentlyContinue) { & git archive --format=tar HEAD | & gzip > (Join-Path $$pkg ($$base + '.tar.gz')) } elseif (Get-Command tar -ErrorAction SilentlyContinue) { & git archive --format=tar HEAD > (Join-Path $$pkg ($$base + '.tar')); Write-Host 'gzip not found; created plain .tar instead:' (Join-Path $$pkg ($$base + '.tar')) } else { Write-Host 'gzip/tar not available; skipping .tar.gz creation' } } else { Copy-Item -Path (Join-Path (Get-Location) '*') -Destination $$staging -Recurse -Force -Exclude '.git','$(PKG_DIR)','$(DIST_DIR)' ; $$zip = Join-Path $$pkg ($$base + '.zip'); if (Test-Path $$zip) { Remove-Item $$zip -Force -ErrorAction SilentlyContinue }; Compress-Archive -Path (Join-Path $$staging '*') -DestinationPath $$zip -Force; if (Get-Command tar -ErrorAction SilentlyContinue) { & tar -C $$staging -czf (Join-Path $$pkg ($$base + '.tar.gz')) . } ; Remove-Item -Recurse -Force $$staging } ; Write-Host 'Created source packages:' (Get-ChildItem -Path $$pkg -Filter ($$base + '*')).FullName"
+
+else
+	@# POSIX packaging for source
+	@base=Steam-Achievement-Abuser-Enhanced-Source-Code; \
+	if command -v git >/dev/null 2>&1; then \
+		echo "Creating $(PKG_DIR)/$$base.zip and .tar.gz via git archive"; \
+		git archive --format=zip -o "$(PKG_DIR)/$$base.zip" HEAD || true; \
+		git archive --format=tar HEAD | gzip > "$(PKG_DIR)/$$base.tar.gz" || true; \
+	else \
+		staging="$(PKG_DIR)/$$base"; mkdir -p $$staging; cp -r . $$staging; rm -rf $$staging/$(PKG_DIR) $$staging/$(DIST_DIR) $$staging/.git || true; (cd $(PKG_DIR) && zip -r "$$base.zip" "$$base" ) > /dev/null 2>&1 || echo "zip not available"; (cd $(PKG_DIR) && tar -czf "$$base.tar.gz" "$$base" ) > /dev/null 2>&1 || echo "tar not available"; rm -rf $$staging; \
+	fi; \
+	ls -1 "$(PKG_DIR)" || true
+endif
+
+# Top-level package: produce both artifacts and source bundles
+package: package-artifacts package-source
+	@echo All packages created in '$(PKG_DIR)'
+
 # Clean the build
 clean:
 	dotnet clean
@@ -103,4 +128,4 @@ else
 	@rm -rf $(DIST_DIR)
 endif
 
-.PHONY: all build clean check-dotnet install-dotnet package prepare-releases package-artifacts
+.PHONY: all build clean check-dotnet install-dotnet package prepare-releases package-artifacts package-source
