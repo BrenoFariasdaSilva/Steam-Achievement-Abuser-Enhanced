@@ -27,6 +27,7 @@ Project-Description.
 ![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.svg)
 
 </div>
+
 <div align="center">
   
 ![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/4c88886ca92b3212cac1f69aa8d8240584ed7e30.svg "Repobeats analytics image")
