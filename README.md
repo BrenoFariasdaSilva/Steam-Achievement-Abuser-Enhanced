@@ -42,6 +42,7 @@ Project-Description.
 	- [Setup](#setup)
 		- [Clone the repository](#clone-the-repository)
 	- [Usage](#usage)
+	- [Results](#results)
 - [How does it work?](#how-does-it-work)
 - [What is it?](#what-is-it)
 - [How to use:](#how-to-use)
@@ -79,6 +80,10 @@ In order to run the project, run the following command:
 ```bash
 make run
 ```
+
+## Results
+
+Discuss the results obtained in the project.
 
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
