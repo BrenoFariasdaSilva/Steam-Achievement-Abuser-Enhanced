@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NuGet CLI (if needed)
+        run: choco install nuget.commandline -y
+
+      - name: Restore NuGet packages
+        run: nuget restore "src/Steam Achievement Abuser.sln"
+
+      - name: Build solution
+        run: msbuild "src/Steam Achievement Abuser.sln" /m /p:Configuration=Release
