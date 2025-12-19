@@ -48,6 +48,7 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 	- [Requirements](#requirements)
 	- [Setup](#setup)
 		- [Clone the Repository](#clone-the-repository)
+		- [Build](#build)
 	- [Usage](#usage)
 	- [Results](#results)
 - [How does it work?](#how-does-it-work)
@@ -83,6 +84,30 @@ The code is organized as a Visual Studio/.NET solution with a native-wrapper lib
 git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.git
 cd Steam-Achievement-Abuser-Enhanced
 ```
+
+### Build
+
+On Windows you can use the included `Makefile` (requires `make`) which will run the `dotnet build` and copy the built binaries to `dist/`:
+
+```powershell
+make
+```
+
+If you don't have `make` available, build directly from the `src` folder:
+
+```powershell
+cd src
+dotnet build
+```
+
+After building you will find the runtime artifacts in `src/bin/Debug/` (or in `dist/` if you used the Makefile). The files you typically need are:
+
+- `SAM.API.dll` (native wrapper)
+- `Steam Achievement Abuser App.exe` (helper app used to trigger achievements for a single game)
+- One of the runner apps:
+  - `Steam Achievement Abuser Manual.exe` — interactive mode (asks for a pause, prompts before start)
+  - `Steam Achievement Abuser Auto.exe` — runs automatically once over your games
+  - `Steam Achievement Abuser Multiple Runs.exe` — runs automatically and repeats on a one-hour cycle
 
 ## Usage
 
