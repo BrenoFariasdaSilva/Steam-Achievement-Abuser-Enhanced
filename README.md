@@ -51,7 +51,6 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 		- [Build (recommended)](#build-recommended)
 	- [Usage](#usage)
 	- [Results](#results)
-- [What is it?](#what-is-it)
 - [How to use:](#how-to-use)
 - [Done!](#done)
 - [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
@@ -127,10 +126,6 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 ## Results
 
 Discuss the results obtained in the project.
-
-
-# What is it?
-This Program is the fastest (reliable) way of getting every single Achievement for every single one of your games on Steam. 
 
 # How to use:
 1. Download latest release [from here](https://github.com/4G0NYY/Steam-Achievement-Abuser/releases)
