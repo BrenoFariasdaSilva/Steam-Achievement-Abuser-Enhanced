@@ -12,9 +12,11 @@ Steam-Achievement-Abuser-Enhanced is an enhanced, automated fork of the original
 
 Key features:
 - Three modes of operation: Manual (interactive), Auto (single automated run), and Multiple Runs (repeats the automated run on a schedule).
+- Shows an estimated total runtime before an automated run based on the number of games and configured pacing.
 - Uses a lightweight native wrapper library (`SAM.API.dll`) to communicate with Steam's local APIs.
 - Safe pacing: by default the tool keeps each helper app open for ~5 seconds and waits another ~5 seconds before starting the next game to reduce the chance of Steam instability.
 - A small `Makefile` is provided to build the projects and collect the built artifacts into `dist/` for easy packaging.
+- A proper README with setup, usage, and contribution instructions.
 
 Based on: https://github.com/gibbed/SteamAchievementManager
   
