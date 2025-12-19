@@ -14,6 +14,11 @@
 ![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.svg)
 
 </div>
+<div align="center">
+  
+![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/4c88886ca92b3212cac1f69aa8d8240584ed7e30.svg "Repobeats analytics image")
+
+</div>
 
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
