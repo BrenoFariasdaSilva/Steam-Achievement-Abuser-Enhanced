@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser", "Steam Achievement Abuser\Steam Achievement Abuser.csproj", "{E64FF1CA-13E6-480C-B731-99FDAD9FADA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser Manual", "Steam Achievement Abuser Manual\Steam Achievement Abuser Manual.csproj", "{E64FF1CA-13E6-480C-B731-99FDAD9FADA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser App", "Steam Achievement Abuser App\Steam Achievement Abuser App.csproj", "{85257E3F-4308-4DDC-A69E-45B029EF3050}"
 EndProject

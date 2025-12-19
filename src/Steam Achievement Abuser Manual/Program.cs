@@ -1,4 +1,4 @@
-﻿using SAM.API;
+using SAM.API;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Net;
 using System.Threading;
 using System.Xml.XPath;
 
-namespace Steam_Achievement_Abuser
+namespace Steam_Achievement_Abuser_Manual
 {
     class Program
     {
@@ -20,9 +20,9 @@ namespace Steam_Achievement_Abuser
         static void Main()
         {
             Console.SetWindowSize(140, 36);
-            Console.Title = "Steam Achievement Abuser | Breno Farias da Silva";
+            Console.Title = "Steam Achievement Abuser Manual | Breno Farias da Silva";
             Console.WriteLine("   _____ _                                      _     _                                     _              _                         \n  / ____| |                           /\\       | |   (_)                                   | |       /\\   | |                        \n | (___ | |_ ___  __ _ _ __ ___      /  \\   ___| |__  _  _____   _____ _ __ ___   ___ _ __ | |_     /  \\  | |__  _   _ ___  ___ _ __ \n  \\___ \\| __/ _ \\/ _` | '_ ` _ \\    / /\\ \\ / __| '_ \\| |/ _ \\ \\ / / _ \\ '_ ` _ \\ / _ \\ '_ \\| __|   / /\\ \\ | '_ \\| | | / __|/ _ \\ '__|\n  ____) | ||  __/ (_| | | | | | |  / ____ \\ (__| | | | |  __/\\ V /  __/ | | | | |  __/ | | | |_   / ____ \\| |_) | |_| \\__ \\  __/ |   \n |_____/ \\__\\___|\\__,_|_| |_| |_| /_/    \\_\\___|_| |_|_|\\___| \\_/ \\___|_| |_| |_|\\___|_| |_|\\__| /_/    \\_\\_.__/ \\__,_|___/\\___|_|   \n");
-            Console.WriteLine("Welcome to the fixed Steam Achievement Abuser by Breno Farias da Silva");
+            Console.WriteLine("Welcome to the Steam Achievement Abuser Manual by Breno Farias da Silva");
             Console.WriteLine("Based on: https://github.com/gibbed/SteamAchievementManager");
             Console.WriteLine("Init...");
             try
