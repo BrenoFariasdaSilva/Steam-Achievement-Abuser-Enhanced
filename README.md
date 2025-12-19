@@ -121,7 +121,11 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 
 ## Results
 
-Discuss the results obtained in the project.
+When the run completes the helper app will have attempted to unlock achievements for each processed game. Results are visible inside Steam (achievements unlocked). Keep the following in mind:
+
+- This tool modifies local achievement state — use it only on accounts you control and where this behavior is acceptable.
+- The default pacing (5s open + 5s gap) is conservative to avoid triggering Steam crashes when processing many games; you can adjust it in Manual mode.
+- If you package artifacts for distribution, include `SAM.API.dll` plus the chosen runner exe(s).
 
 ## Contributing
 
