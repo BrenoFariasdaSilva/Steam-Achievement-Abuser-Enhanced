@@ -51,7 +51,6 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 		- [Build (recommended)](#build-recommended)
 	- [Usage](#usage)
 	- [Results](#results)
-	- [How to compile:](#how-to-compile)
 	- [Contributing](#contributing)
 	- [Collaborators](#collaborators)
 	- [License](#license)
@@ -123,15 +122,6 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 ## Results
 
 Discuss the results obtained in the project.
-
-## How to compile: 
-1. Install Dotnet
-2. Download the Source Code and unzip it into a folder.
-3. Open a CMD-Window and cd into the Source-Directory (e.g: cd C:\Users\testuser\Desktop\SteamAchievementAbuser)
-4. Type the following into your CMD-Window: "dotnet build"
-5. The Dotnet build-process should only take a few seconds. After that, you'll find a new Folder inside of your Directory called "bin". In there will be another folder called "Debug"
-6. In there are all the Executables you'll need! You will need "SAM.API.dll", "Steam Achievement Abuser App.exe" and "Steam Achievement Abuser.exe". You can delete the rest.
-7. Now simply open "Steam Achievement Abuser.exe" and it should work!
 
 ## Contributing
 
