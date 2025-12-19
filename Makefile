@@ -61,18 +61,27 @@ else
 	@cp src/bin/Debug/net10.0/SAM.API.dll $(DIST_DIR)/
 endif
 
-# Package artifacts into common archive formats for GitHub releases
-package: build
+# Prepare releases directory (clean then recreate)
+prepare-releases:
+	@echo Preparing '$(PKG_DIR)' (clean)...
+ifeq ($(OS), Windows)
+	@if exist $(PKG_DIR) rmdir /S /Q $(PKG_DIR)
+	@mkdir $(PKG_DIR) >nul 2>&1 || true
+else
+	@rm -rf $(PKG_DIR)
+	@mkdir -p $(PKG_DIR)
+endif
+
+# Package artifacts from $(DIST_DIR) into deterministic archives under $(PKG_DIR)
+package-artifacts: build prepare-releases
 	@echo Packaging artifacts from '$(DIST_DIR)' into '$(PKG_DIR)'...
 
 ifeq ($(OS), Windows)
-	@if not exist $(PKG_DIR) mkdir $(PKG_DIR)
-	@powershell -NoProfile -Command "$$dist = '$(DIST_DIR)'; $$pkg = '$(PKG_DIR)'; if(-not (Test-Path $$dist)) { Write-Host 'No artifacts to package (dist missing)'; exit 0 }; if(-not (Test-Path $$pkg)) { New-Item -ItemType Directory -Path $$pkg | Out-Null }; $$base = 'Steam-Achievement-Abuser-Enhanced'; $$staging = Join-Path $$pkg $$base; $$folder = 'Steam Achievement Abuser Enhanced'; if (Test-Path (Join-Path $$pkg ($$base + '.zip'))) { Remove-Item (Join-Path $$pkg ($$base + '.zip')) -Force -ErrorAction SilentlyContinue }; if (Test-Path (Join-Path $$pkg ($$base + '.7z'))) { Remove-Item (Join-Path $$pkg ($$base + '.7z')) -Force -ErrorAction SilentlyContinue }; if (Test-Path (Join-Path $$pkg ($$base + '.rar'))) { Remove-Item (Join-Path $$pkg ($$base + '.rar')) -Force -ErrorAction SilentlyContinue }; if (Test-Path (Join-Path $$pkg ($$base + '.tar.gz'))) { Remove-Item (Join-Path $$pkg ($$base + '.tar.gz')) -Force -ErrorAction SilentlyContinue }; New-Item -ItemType Directory -Path (Join-Path $$staging $$folder) -Force | Out-Null; Copy-Item -Path (Join-Path $$dist '*') -Destination (Join-Path $$staging $$folder) -Recurse -Force; $$zip = Join-Path $$pkg ($$base + '.zip'); Compress-Archive -Path (Join-Path $$staging $$folder) -DestinationPath $$zip -Force; if (Get-Command 7z -ErrorAction SilentlyContinue) { & 7z a -t7z (Join-Path $$pkg ($$base + '.7z')) (Join-Path $$staging $$folder) } ; if (Get-Command rar -ErrorAction SilentlyContinue) { & rar a (Join-Path $$pkg ($$base + '.rar')) (Join-Path $$staging $$folder) } ; if (Get-Command tar -ErrorAction SilentlyContinue) { & tar -C $$staging -czf (Join-Path $$pkg ($$base + '.tar.gz')) $$folder } ; Remove-Item -Recurse -Force $$staging; Write-Host 'Created packages:' (Get-ChildItem -Path $$pkg -Filter ($$base + '*')).FullName"
- 
+	@powershell -NoProfile -Command "$$dist = '$(DIST_DIR)'; $$pkg = '$(PKG_DIR)'; if(-not (Test-Path $$dist)) { Write-Host 'No artifacts to package (dist missing)'; exit 0 }; $$base = 'Steam-Achievement-Abuser-Enhanced-Executables'; $$staging = Join-Path $$pkg $$base; $$folder = 'Steam Achievement Abuser Enhanced'; if (Test-Path $$staging) { Remove-Item -Recurse -Force $$staging -ErrorAction SilentlyContinue }; New-Item -ItemType Directory -Path (Join-Path $$staging $$folder) -Force | Out-Null; Copy-Item -Path (Join-Path $$dist '*') -Destination (Join-Path $$staging $$folder) -Recurse -Force; $$zip = Join-Path $$pkg ($$base + '.zip'); if (Test-Path $$zip) { Remove-Item $$zip -Force -ErrorAction SilentlyContinue }; Compress-Archive -Path (Join-Path $$staging $$folder) -DestinationPath $$zip -Force; if (Get-Command 7z -ErrorAction SilentlyContinue) { & 7z a -t7z (Join-Path $$pkg ($$base + '.7z')) (Join-Path $$staging $$folder) } ; if (Get-Command rar -ErrorAction SilentlyContinue) { & rar a (Join-Path $$pkg ($$base + '.rar')) (Join-Path $$staging $$folder) } ; if (Get-Command tar -ErrorAction SilentlyContinue) { & tar -C $$staging -czf (Join-Path $$pkg ($$base + '.tar.gz')) $$folder } ; Remove-Item -Recurse -Force $$staging; Write-Host 'Created packages:' (Get-ChildItem -Path $$pkg -Filter ($$base + '*')).FullName"
+
 else
-	@mkdir -p $(PKG_DIR)
-	@if [ ! -d "$(DIST_DIR)" ]; then echo "No artifacts to package (dist missing)"; exit 0; fi
-	@ts=$$(date +%Y%m%d%H%M%S); base=Steam-Achievement-Abuser-Enhanced; staging="$(PKG_DIR)/$$base"; folder="Steam Achievement Abuser Enhanced"; \
+	@# POSIX packaging for artifacts
+	@ts=$$(date +%Y%m%d%H%M%S); base=Steam-Achievement-Abuser-Enhanced-Executables; staging="$(PKG_DIR)/$$base"; folder="Steam Achievement Abuser Enhanced"; \
 		mkdir -p $$staging/"$$folder"; \
 		cp -r "$(DIST_DIR)/." $$staging/"$$folder"/; \
 		if [ -f "$(PKG_DIR)/$$base.zip" ]; then rm -f "$(PKG_DIR)/$$base.zip"; fi; \
@@ -94,4 +103,4 @@ else
 	@rm -rf $(DIST_DIR)
 endif
 
-.PHONY: all build clean check-dotnet install-dotnet package
+.PHONY: all build clean check-dotnet install-dotnet package prepare-releases package-artifacts
