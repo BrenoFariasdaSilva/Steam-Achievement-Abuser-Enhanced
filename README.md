@@ -48,10 +48,9 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 	- [Requirements](#requirements)
 	- [Setup](#setup)
 		- [Clone the Repository](#clone-the-repository)
-		- [Build](#build)
+		- [Build (recommended)](#build-recommended)
 	- [Usage](#usage)
 	- [Results](#results)
-- [How does it work?](#how-does-it-work)
 - [What is it?](#what-is-it)
 - [How to use:](#how-to-use)
 - [Done!](#done)
@@ -85,7 +84,7 @@ git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhance
 cd Steam-Achievement-Abuser-Enhanced
 ```
 
-### Build
+### Build (recommended)
 
 On Windows you can use the included `Makefile` (requires `make`) which will run the `dotnet build` and copy the built binaries to `dist/`:
 
@@ -129,8 +128,6 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 
 Discuss the results obtained in the project.
 
-# How does it work?
-It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
 
 # What is it?
 This Program is the fastest (reliable) way of getting every single Achievement for every single one of your games on Steam. 
