@@ -54,8 +54,40 @@ namespace Steam_Achievement_Abuser_Auto
                 ps.UseShellExecute = false;
                 Console.WriteLine($"{i}/{_Games.Count()} | {Game.Name}");
                 using (Process p = Process.Start(ps))
-                    p.WaitForExit();
+                {
+                    // Ensure the process remains "open" for at least `pausebetweenabuse` ms.
+                    var sw = Stopwatch.StartNew();
+                    bool exited = p.WaitForExit(pausebetweenabuse);
+                    if (!exited)
+                    {
+                        try
+                        {
+                            if (p.CloseMainWindow())
+                            {
+                                if (!p.WaitForExit(1000))
+                                    p.Kill();
+                            }
+                            else
+                            {
+                                p.Kill();
+                            }
+                        }
+                        catch
+                        {
+                            try { p.Kill(); } catch { }
+                        }
+                        p.WaitForExit();
+                    }
+                    else
+                    {
+                        // If it exited earlier than the open-period, wait the remaining time
+                        var elapsed = (int)sw.ElapsedMilliseconds;
+                        if (elapsed < pausebetweenabuse)
+                            Thread.Sleep(pausebetweenabuse - elapsed);
+                    }
+                }
                 i++;
+                // Wait another `pausebetweenabuse` ms between closing and next launch
                 Thread.Sleep(pausebetweenabuse);
             }
             Console.WriteLine("Done (auto)!");

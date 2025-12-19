@@ -42,8 +42,10 @@ namespace Steam_Achievement_Abuser_Manual
             Console.WriteLine("");
             Console.WriteLine("How long should the pause between each game be? (Lower Value = Faster but maybe unstable / Higher Value = Slower but stable (Leave Empty for Default: 5000)");
             string helpmeIwanttodie = Console.ReadLine();
-            if (int.TryParse(helpmeIwanttodie, out int pausebetweenabuse))
+            if (int.TryParse(helpmeIwanttodie, out int parsed))
             {
+                // assign to the static field so StartAbuse uses the value
+                pausebetweenabuse = parsed;
                 Console.WriteLine($"The pause in between the abuse will be: {pausebetweenabuse}");
             }
             else
@@ -66,9 +68,34 @@ namespace Steam_Achievement_Abuser_Manual
                 ps.CreateNoWindow = true;
                 ps.UseShellExecute = false;
                 Console.WriteLine($"{i}/{_Games.Count()} | {Game.Name}");
-                using (Process p = Process.Start(ps)) 
-                    p.WaitForExit();
+                using (Process p = Process.Start(ps))
+                {
+                    // Wait up to `pausebetweenabuse` ms with the game open
+                    if (!p.WaitForExit(pausebetweenabuse))
+                    {
+                        try
+                        {
+                            // Try to close gracefully, then force kill if needed
+                            if (p.CloseMainWindow())
+                            {
+                                if (!p.WaitForExit(1000))
+                                    p.Kill();
+                            }
+                            else
+                            {
+                                p.Kill();
+                            }
+                        }
+                        catch
+                        {
+                            try { p.Kill(); } catch { }
+                        }
+                        // Ensure process has exited
+                        p.WaitForExit();
+                    }
+                }
                 i++;
+                // Wait another `pausebetweenabuse` ms between closing and next launch
                 Thread.Sleep(pausebetweenabuse);
             }
             Console.WriteLine("");
