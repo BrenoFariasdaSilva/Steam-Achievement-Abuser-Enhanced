@@ -34,6 +34,7 @@
 - [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
 	- [How to compile:](#how-to-compile)
 	- [Contributing](#contributing)
+	- [Collaborators](#collaborators)
 	- [License](#license)
 		- [Apache License 2.0](#apache-license-20)
 
@@ -92,6 +93,23 @@ Please follow these guidelines to make your contributions smooth and effective:
 4. **Stay Engaged**: Respond to any feedback from the project maintainers and make necessary adjustments to your PR.
 
 5. **Celebrate**: Once your PR is merged, celebrate your contribution to the project!
+
+## Collaborators
+
+We thank the following people who contributed to this project:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#" title="defina o titulo do link">
+        <img src="https://github.com/BrenoFariasdaSilva/DDoS-Detector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+        <sub>
+          <b>Breno Farias da Silva</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## License
 
