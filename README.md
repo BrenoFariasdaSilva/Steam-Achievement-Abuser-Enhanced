@@ -15,40 +15,6 @@ It automates launching a helper app that triggers achievements for games you own
 
 </div>
 
-### Key Features
-
-- **Three execution modes**
-  - **Manual**: interactive, configurable pacing before execution.
-  - **Auto**: single fully automated run with ETA calculation.
-  - **Multiple Runs**: automated looping mode with run counter and fixed cooldown between cycles.
-- **Estimated Total Runtime (ETA)** printed before execution, based on:
-  - number of games
-  - open duration per game
-  - cooldown between games
-- **Safe pacing by default**
-  - 5 seconds with the game open
-  - 5 seconds cooldown before the next game
-  - Designed to reduce Steam instability when processing large libraries.
-- **Improved console output**
-  - Clear headers
-  - Explicit “Enhanced” branding
-  - GitHub repository reference on startup.
-- **Makefile-based build system**
-  - Validates .NET installation
-  - Optionally installs the required .NET Framework
-  - Builds all projects
-  - Collects artifacts into `dist/`
-- **Deterministic release pipeline**
-  - Clean build directories before packaging
-  - Reproducible release outputs
-- **Cross-platform release packaging**
-  - `.zip`, `.tar.gz`, `.7z`, `.rar`
-  - Separate source-code and binary artifacts
-- **Cleaner repository hygiene**
-  - Proper `.gitignore`
-  - Updated LICENSE
-  - CONTRIBUTING guidelines included
-  
 ---
 
 <div align="center">
@@ -91,6 +57,40 @@ It automates launching a helper app that triggers achievements for games you own
 This repository provides a small suite of tools that automate the process of completing achievements for games you own on Steam. It is intended for users who want to locally unlock achievements (for testing, correction, or convenience) and who understand the implications of touching Steam's local APIs. Use at your own risk.
 
 The code is organized as a Visual Studio/.NET solution with a native-wrapper library (`SAM.API`) and a set of small console apps that orchestrate achievement activation.
+
+### Key Features
+
+- **Three execution modes**
+  - **Manual**: interactive, configurable pacing before execution.
+  - **Auto**: single fully automated run with ETA calculation.
+  - **Multiple Runs**: automated looping mode with run counter and fixed cooldown between cycles.
+- **Estimated Total Runtime (ETA)** printed before execution, based on:
+  - number of games
+  - open duration per game
+  - cooldown between games
+- **Safe pacing by default**
+  - 5 seconds with the game open
+  - 5 seconds cooldown before the next game
+  - Designed to reduce Steam instability when processing large libraries.
+- **Improved console output**
+  - Clear headers
+  - Explicit “Enhanced” branding
+  - GitHub repository reference on startup.
+- **Makefile-based build system**
+  - Validates .NET installation
+  - Optionally installs the required .NET Framework
+  - Builds all projects
+  - Collects artifacts into `dist/`
+- **Deterministic release pipeline**
+  - Clean build directories before packaging
+  - Reproducible release outputs
+- **Cross-platform release packaging**
+  - `.zip`, `.tar.gz`, `.7z`, `.rar`
+  - Separate source-code and binary artifacts
+- **Cleaner repository hygiene**
+  - Proper `.gitignore`
+  - Updated LICENSE
+  - CONTRIBUTING guidelines included
 
 ## Requirements
 
