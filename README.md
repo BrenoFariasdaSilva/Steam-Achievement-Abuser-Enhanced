@@ -4,7 +4,16 @@
 
 </div>
 
+<div align="center">
+  
+---
+
+Project-Description.
 - Based on: https://github.com/gibbed/SteamAchievementManager
+  
+---
+
+</div>
 
 <div align="center">
 
