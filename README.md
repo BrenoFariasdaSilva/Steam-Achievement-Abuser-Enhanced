@@ -112,7 +112,7 @@ git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhance
 cd Steam-Achievement-Abuser-Enhanced
 ```
 
-### Build (recommended)
+### Build
 
 On Windows you can use the included `Makefile` (requires `make`) which will run the `dotnet build` and copy the built binaries to `dist/`:
 
