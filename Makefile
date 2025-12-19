@@ -44,7 +44,6 @@ else
 	@rm -rf $(DIST_DIR) src/bin
 endif
 
-
 build: prebuild-clean install-dotnet check-dotnet
 	cd src && dotnet build
 	@$(MAKE) copy-artifacts
