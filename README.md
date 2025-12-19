@@ -2,6 +2,19 @@
 
 - Based on: https://github.com/gibbed/SteamAchievementManager
 
+<div align="center">
+
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/Steam-Achievement-Abuser-Enhanced/main)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasDaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.svg)
+
+</div>
+
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
 
