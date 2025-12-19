@@ -68,7 +68,9 @@ The code is organized as a Visual Studio/.NET solution with a native-wrapper lib
 
 - Windows 10 or later (tools depend on Steam and some Windows APIs).
 - Steam must be installed and running with the account that owns the target games.
-- .NET SDK (for building) — a recent `dotnet` SDK (the repo's projects target .NET Framework 4.7.1)
+- .NET Framework 4.7.1 (build target) — the projects in this repository target **.NET Framework 4.7.1**.
+
+  - To build: install the **.NET Framework 4.7.1 Developer Pack / Targeting Pack** or use a Visual Studio edition that supports .NET Framework projects. On Windows `dotnet build` can be used if MSBuild and the targeting pack are installed.
 - Make (optional) — the provided `Makefile` automates the build + artifact collection; on Windows you can run it from PowerShell if `make` is available, or build directly with `dotnet build`.
 - Network access (the Auto variants download a small XML index of candidate games).
 
