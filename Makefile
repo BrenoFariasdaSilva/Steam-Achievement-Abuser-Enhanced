@@ -32,7 +32,16 @@ else
 endif
 
 # Build the .NET project
-build: install-dotnet check-dotnet
+prebuild-clean:
+	@echo Cleaning previous build artifacts...
+ifeq ($(OS), Windows)
+	@if exist $(DIST_DIR) rmdir /S /Q $(DIST_DIR)
+	@if exist src\bin rmdir /S /Q src\bin
+else
+	@rm -rf $(DIST_DIR) src/bin
+endif
+
+build: prebuild-clean install-dotnet check-dotnet
 	cd src && dotnet build
 	@echo Copying build artifacts to $(DIST_DIR)...
 ifeq ($(OS), Windows)
