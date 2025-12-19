@@ -14,7 +14,7 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
     class Program
     {
         // Pause between games (ms)
-        private static int pausebetweenabuse = 2000;
+        private static int pausebetweenabuse = 5000;
         private static Client _SteamClient = null;
         private static List<GameInfo> _Games = new List<GameInfo>();
 
