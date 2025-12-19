@@ -21,9 +21,10 @@ namespace Steam_Achievement_Abuser_Loop
         static void Main()
         {
             Console.SetWindowSize(140, 36);
-            Console.Title = "Steam Achievement Abuser Loop | Breno Farias da Silva";
-            Console.WriteLine("Starting Steam Achievement Abuser in looped automatic mode...");
-            Console.WriteLine("Based on: https://github.com/gibbed/SteamAchievementManager");
+            Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
+            Console.WriteLine("Starting Steam Achievement Abuser Enhanced");
+            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            Console.WriteLine();
 
             try
             {
@@ -42,8 +43,10 @@ namespace Steam_Achievement_Abuser_Loop
                 try
                 {
                     _Games.Clear();
+                    Console.WriteLine();
                     AddGames();
                     Console.WriteLine($"Found {_Games.Count()} games. Running automatically...");
+                    Console.WriteLine();
                     StartAbuse();
                 }
                 catch (Exception ex)
