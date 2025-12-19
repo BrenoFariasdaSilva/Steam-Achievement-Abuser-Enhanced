@@ -43,7 +43,10 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
                 {
                     _Games.Clear();
                     AddGames();
-                    Console.WriteLine($"Found {_Games.Count()} games. Running automatically...");
+                    Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
+                    // Estimate total time: keep each game open for pausebetweenabuse ms, then pausebetweenabuse ms gap
+                    double estimatedHoursMulti = (_Games.Count * 2.0 * pausebetweenabuse) / 3600000.0;
+                    Console.WriteLine($"Estimated total time to process {_Games.Count} games: {estimatedHoursMulti:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
                     Console.WriteLine();
                     StartAbuse();
                 }
