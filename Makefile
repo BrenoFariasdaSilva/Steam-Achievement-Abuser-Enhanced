@@ -1,4 +1,4 @@
-# Makefile for Steam Achievement Abuser
+# Makefile for Steam Achievement Abuser Enhanced
 
 # Detect OS
 OS := $(shell uname 2>NUL || echo Windows)
