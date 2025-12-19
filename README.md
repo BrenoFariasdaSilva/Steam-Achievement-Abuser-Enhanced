@@ -20,6 +20,7 @@ It automates launching a helper app that triggers achievements for games you own
 <div align="center">
 
 ![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+[![Build Status](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/actions/workflows/ci.yml)
 ![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/Steam-Achievement-Abuser-Enhanced/master)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
 ![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/Steam-Achievement-Abuser-Enhanced)
