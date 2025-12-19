@@ -111,11 +111,19 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 
 ## Usage
 
-In order to run the project, run the following command:
+1. Start Steam and make sure you're logged into the account whose achievements you intend to process.
+2. Run one of the runner exes (Manual / Auto / Multiple Runs):
 
-```bash
-make run
-```
+  - Manual: `Steam Achievement Abuser Manual.exe`
+    - Prompts for a pause length (ms). Default is 5000 ms (5s open + 5s gap per game).
+  - Auto: `Steam Achievement Abuser Auto.exe`
+    - Automatically downloads the games index, computes an ETA, and runs once.
+  - Multiple Runs: `Steam Achievement Abuser Multiple Runs.exe`
+    - Same as Auto but runs in a continuous loop — it waits one hour between cycles.
+
+3. The runner apps will print an estimated total time (in hours) before starting, based on the number of games and the configured per-game open/gap duration.
+
+4. The tool launches the helper (`Steam Achievement Abuser App.exe`) for each game, keeps it open for a fixed period (by default 5s), attempts to close it, then waits the same fixed period before starting the next game. This pacing helps avoid Steam instability.
 
 ## Results
 
