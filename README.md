@@ -51,8 +51,6 @@ Based on: https://github.com/gibbed/SteamAchievementManager
 		- [Build (recommended)](#build-recommended)
 	- [Usage](#usage)
 	- [Results](#results)
-- [How to use:](#how-to-use)
-- [Done!](#done)
 - [You don't trust my pre-compiled .exe?](#you-dont-trust-my-pre-compiled-exe)
 	- [How to compile:](#how-to-compile)
 	- [Contributing](#contributing)
@@ -126,16 +124,6 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 ## Results
 
 Discuss the results obtained in the project.
-
-# How to use:
-1. Download latest release [from here](https://github.com/4G0NYY/Steam-Achievement-Abuser/releases)
-2. Unpack in some folder
-3. Start Steam 
-4. Start Steam Achievement Abuser.exe
-5. Press any button when the Program asks you to do so in oder to start it!
-# Done!
-
-Enjoy! :)
 
 # You don't trust my pre-compiled .exe?
 No Problem! After all, it's always more secure to compile a program yourself. In order to compile this little tool, you will need:
