@@ -39,6 +39,8 @@ Project-Description.
 	- [Table of Contents](#table-of-contents)
 	- [Introduction](#introduction)
 	- [Requirements](#requirements)
+	- [Setup](#setup)
+		- [Clone the repository](#clone-the-repository)
 - [How does it work?](#how-does-it-work)
 - [What is it?](#what-is-it)
 - [How to use:](#how-to-use)
@@ -57,6 +59,17 @@ Detailed project description.
 ## Requirements
 
 Bullet points of the requirements.
+
+## Setup
+
+### Clone the repository
+
+1. Clone the repository with the following command:
+
+   ```bash
+   git clone https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.git
+   cd Steam-Achievement-Abuser-Enhanced
+   ```
 
 # How does it work?
 It works basically identical to the Steam Achievement Manager that can be found on Github, too. But instead of you having to manually go through each game, it automates that for you. In order to prevent Steam from crashing at around ~800 finished Games, there's a 5 Second Delay between each game that's "abused".
