@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser App", "Steam Achievement Abuser App\Steam Achievement Abuser App.csproj", "{85257E3F-4308-4DDC-A69E-45B029EF3050}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Achievement Abuser Auto", "Steam Achievement Abuser Auto\Steam Achievement Abuser Auto.csproj", "{A9B3E7D3-5B2F-4C1A-9F3A-1E2D3C4F5A67}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM.API", "SAM.API\SAM.API.csproj", "{DF9102D5-048A-4D21-8CE3-3544CBDF0ED1}"
 EndProject
 Global
@@ -27,6 +29,10 @@ Global
 		{DF9102D5-048A-4D21-8CE3-3544CBDF0ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF9102D5-048A-4D21-8CE3-3544CBDF0ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF9102D5-048A-4D21-8CE3-3544CBDF0ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B3E7D3-5B2F-4C1A-9F3A-1E2D3C4F5A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B3E7D3-5B2F-4C1A-9F3A-1E2D3C4F5A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B3E7D3-5B2F-4C1A-9F3A-1E2D3C4F5A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B3E7D3-5B2F-4C1A-9F3A-1E2D3C4F5A67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
