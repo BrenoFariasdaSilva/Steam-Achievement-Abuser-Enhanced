@@ -21,11 +21,11 @@ namespace Steam_Achievement_Abuser_Manual
         {
             Console.SetWindowSize(140, 36);
             Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
-            Console.WriteLine("   _____ _                                      _     _                                     _              _                         \n  / ____| |                           /\\       | |   (_)                                   | |       /\\   | |                        \n | (___ | |_ ___  __ _ _ __ ___      /  \\   ___| |__  _  _____   _____ _ __ ___   ___ _ __ | |_     /  \\  | |__  _   _ ___  ___ _ __ \n  \\___ \\| __/ _ \\/ _` | '_ ` _ \\    / /\\ \\ / __| '_ \\| |/ _ \\ \\ / / _ \\ '_ ` _ \\ / _ \\ '_ \\| __|   / /\\ \\ | '_ \\| | | / __|/ _ \\ '__|\n  ____) | ||  __/ (_| | | | | | |  / ____ \\ (__| | | | |  __/\\ V /  __/ | | | | |  __/ | | | |_   / ____ \\| |_) | |_| \\__ \\  __/ |   \n |_____/ \\__\\___|\\__,_|_| |_| |_| /_/    \\_\\___|_| |_|_|\\___| \\_/ \\___|_| |_| |_|\\___|_| |_|\\__| /_/    \\_\\_.__/ \\__,_|___/\\___|_|   \n");
-            Console.WriteLine("Welcome to the Steam Achievement Abuser Manual by Breno Farias da Silva");
-            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
-            Console.WriteLine();
-            Console.WriteLine("Init...");
+            W("   _____ _                                      _     _                                     _              _                         \n  / ____| |                           /\\       | |   (_)                                   | |       /\\   | |                        \n | (___ | |_ ___  __ _ _ __ ___      /  \\   ___| |__  _  _____   _____ _ __ ___   ___ _ __ | |_     /  \\  | |__  _   _ ___  ___ _ __ \n  \\___ \\| __/ _ \\/ _` | '_ ` _ \\    / /\\ \\ / __| '_ \\| |/ _ \\ \\ / / _ \\ '_ ` _ \\ / _ \\ '_ \\| __|   / /\\ \\ | '_ \\| | | / __|/ _ \\ '__|\n  ____) | ||  __/ (_| | | | | | |  / ____ \\ (__| | | | |  __/\\ V /  __/ | | | | |  __/ | | | |_   / ____ \\| |_) | |_| \\__ \\  __/ |   \n |_____/ \\__\\___|\\__,_|_| |_| |_| /_/    \\_\\___|_| |_|_|\\___| \\_/ \\___|_| |_| |_|\\___|_| |_|\\__| /_/    \\_\\_.__/ \\__,_|___/\\___|_|   \n");
+            W("Welcome to the Steam Achievement Abuser Manual by Breno Farias da Silva");
+            W("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            W();
+            W("Init...");
             try
             {
                 _SteamClient = new Client();
@@ -36,42 +36,42 @@ namespace Steam_Achievement_Abuser_Manual
             {
                 throw;
             }
-            Console.WriteLine();
+            W();
             AddGames();
             _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
-            Console.WriteLine($"Found {_Games.Count} games...");
-            Console.WriteLine("");
-            Console.WriteLine("How long should the pause between each game be? (Lower Value = Faster but maybe unstable / Higher Value = Slower but stable (Leave Empty for Default: 5000)");
+            W($"Found {_Games.Count} games...");
+            W("");
+            W("How long should the pause between each game be? (Lower Value = Faster but maybe unstable / Higher Value = Slower but stable (Leave Empty for Default: 5000)");
             string helpmeIwanttodie = Console.ReadLine();
             if (int.TryParse(helpmeIwanttodie, out int parsed))
             {
                 // assign to the static field so StartAbuse uses the value
                 pausebetweenabuse = parsed;
-                Console.WriteLine($"The pause in between the abuse will be: {pausebetweenabuse}");
+                W($"The pause in between the abuse will be: {pausebetweenabuse}");
             }
             else
             {
-                Console.WriteLine("Your Input is invalid. Please type a number between 1000 and 5000.");
+                W("Your Input is invalid. Please type a number between 1000 and 5000.");
             }
             // Estimate total time using the chosen pausebetweenabuse value
             double estimatedHoursManual = (_Games.Count * 2.0 * pausebetweenabuse) / 3600000.0;
-            Console.WriteLine($"Estimated total time to process {_Games.Count} games: {estimatedHoursManual:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
-            Console.WriteLine("Press any key to start abusing Steam...");
+            W($"Estimated total time to process {_Games.Count} games: {estimatedHoursManual:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
+            W("Press any key to start abusing Steam...");
             Console.ReadKey();
-            Console.WriteLine();
+            W();
             StartAbuse();
             Console.ReadKey();
         }
         static void StartAbuse()
         {
-            Console.WriteLine("Starting abuse...");
+            W("Starting abuse...");
             int i = 1;
             foreach (var Game in _Games)
             {
                 ProcessStartInfo ps = new ProcessStartInfo("Steam Achievement Abuser App.exe", Game.Id.ToString());
                 ps.CreateNoWindow = true;
                 ps.UseShellExecute = false;
-                Console.WriteLine($"{i}/{_Games.Count()} | {Game.Name}");
+                W($"{i}/{_Games.Count()} | {Game.Name}");
                 using (Process p = Process.Start(ps))
                 {
                     // Wait up to `pausebetweenabuse` ms with the game open
@@ -102,12 +102,12 @@ namespace Steam_Achievement_Abuser_Manual
                 // Wait another `pausebetweenabuse` ms between closing and next launch
                 Thread.Sleep(pausebetweenabuse);
             }
-            Console.WriteLine("");
-            Console.WriteLine("Done!");
+            W("");
+            W("Done!");
         }
         static void AddGames()
         {
-            Console.WriteLine("Downloading base...");
+            W("Downloading base...");
             var pairs = new List<KeyValuePair<uint, string>>();
             byte[] bytes;
             using (var downloader = new WebClient())
@@ -147,6 +147,31 @@ namespace Steam_Achievement_Abuser_Manual
             if (info.Type == "demo" || info.Type == "mod" || info.Type == "junk")  
                 return;
             _Games.Add(info);
+        }
+
+        private static string ToTitle(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(input.ToLowerInvariant());
+        }
+
+        private static void W()
+        {
+            Console.WriteLine();
+        }
+
+        private static void W(string s)
+        {
+            Console.WriteLine(ToTitle(s));
+        }
+
+        private static void W(string format, params object[] args)
+        {
+            string s;
+            try { s = string.Format(format, args); }
+            catch { s = format; }
+            Console.WriteLine(ToTitle(s));
         }
     }
     internal class GameInfo

@@ -24,9 +24,9 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
         {
             Console.SetWindowSize(140, 36);
             Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
-            Console.WriteLine("Starting Steam Achievement Abuser Enhanced");
-            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
-            Console.WriteLine();
+            W("Starting Steam Achievement Abuser Enhanced");
+            W("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            W();
             try
             {
                 _SteamClient = new Client();
@@ -45,39 +45,39 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
                 {
                     // increment the run counter and announce the cycle
                     runNumber++;
-                    Console.WriteLine($"Run {runNumber}: starting cycle...");
+                    W($"Run {runNumber}: starting cycle...");
 
                     _Games.Clear();
                     AddGames();
                     _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
-                    Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
+                    W($"Found {_Games.Count} games. Running automatically...");
                     
                     // Estimate total time: keep each game open for pausebetweenabuse ms, then pausebetweenabuse ms gap
                     double estimatedHoursMulti = (_Games.Count * 2.0 * pausebetweenabuse) / 3600000.0;
-                    Console.WriteLine($"Estimated total time to process {_Games.Count} games: {estimatedHoursMulti:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
-                    Console.WriteLine();
+                    W($"Estimated total time to process {_Games.Count} games: {estimatedHoursMulti:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
+                    W();
                     StartAbuse();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Unexpected error: {ex.Message}");
+                    W($"Unexpected error: {ex.Message}");
                 }
 
-                Console.WriteLine("Cycle complete. Waiting 1 hour before next run...");
+                W("Cycle complete. Waiting 1 hour before next run...");
                 Thread.Sleep(TimeSpan.FromHours(1));
             }
         }
 
         static void StartAbuse()
         {
-            Console.WriteLine($"Starting abuse (multiple runs) - Run {runNumber}...");
+            W($"Starting abuse (multiple runs) - Run {runNumber}...");
             int i = 1;
             foreach (var Game in _Games)
             {
                 ProcessStartInfo ps = new ProcessStartInfo("Steam Achievement Abuser App.exe", Game.Id.ToString());
                 ps.CreateNoWindow = true;
                 ps.UseShellExecute = false;
-                Console.WriteLine($"{i}/{_Games.Count()} | {Game.Name}");
+                W($"{i}/{_Games.Count()} | {Game.Name}");
                 using (Process p = Process.Start(ps))
                 {
                     // Ensure the process remains "open" for at least `pausebetweenabuse` ms.
@@ -114,12 +114,12 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
                 // Wait another `pausebetweenabuse` ms between closing and next launch
                 Thread.Sleep(pausebetweenabuse);
             }
-            Console.WriteLine("Done for this cycle.");
+            W("Done for this cycle.");
         }
 
         static void AddGames()
         {
-            Console.WriteLine("Downloading base...");
+            W("Downloading base...");
             var pairs = new List<KeyValuePair<uint, string>>();
             byte[] bytes;
             using (var downloader = new WebClient())
@@ -160,6 +160,31 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
             if (info.Type == "demo" || info.Type == "mod" || info.Type == "junk")
                 return;
             _Games.Add(info);
+        }
+
+        private static string ToTitle(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(input.ToLowerInvariant());
+        }
+
+        private static void W()
+        {
+            Console.WriteLine();
+        }
+
+        private static void W(string s)
+        {
+            Console.WriteLine(ToTitle(s));
+        }
+
+        private static void W(string format, params object[] args)
+        {
+            string s;
+            try { s = string.Format(format, args); }
+            catch { s = format; }
+            Console.WriteLine(ToTitle(s));
         }
     }
     internal class GameInfo

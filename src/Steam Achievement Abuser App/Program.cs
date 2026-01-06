@@ -180,6 +180,31 @@ namespace Steam_Achievement_Abuser_App
 
             return defaultValue;
         }
+
+        private static string ToTitle(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(input.ToLowerInvariant());
+        }
+
+        private static void W()
+        {
+            Console.WriteLine();
+        }
+
+        private static void W(string s)
+        {
+            Console.WriteLine(ToTitle(s));
+        }
+
+        private static void W(string format, params object[] args)
+        {
+            string s;
+            try { s = string.Format(format, args); }
+            catch { s = format; }
+            Console.WriteLine(ToTitle(s));
+        }
     }
     internal class AchievementDefinition
     {

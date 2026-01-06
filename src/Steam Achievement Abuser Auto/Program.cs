@@ -22,9 +22,9 @@ namespace Steam_Achievement_Abuser_Auto
         {
             Console.SetWindowSize(140, 36);
             Console.Title = "Steam Achievement Abuser Enhanced | Breno Farias da Silva";
-            Console.WriteLine("Starting Steam Achievement Abuser Enhanced");
-            Console.WriteLine("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
-            Console.WriteLine();
+            W("Starting Steam Achievement Abuser Enhanced");
+            W("GitHub Repository: https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced");
+            W();
             try
             {
                 _SteamClient = new Client();
@@ -36,28 +36,28 @@ namespace Steam_Achievement_Abuser_Auto
                 throw;
             }
 
-            Console.WriteLine();
+            W();
             AddGames();
             _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
-            Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
+            W($"Found {_Games.Count} games. Running automatically...");
             // Estimate total time: each game is kept open for `pausebetweenabuse` ms and
             // then there's another `pausebetweenabuse` ms between runs => 2 * pausebetweenabuse per game
             double estimatedHours = (_Games.Count * 2.0 * pausebetweenabuse) / 3600000.0;
-            Console.WriteLine($"Estimated total time to process {_Games.Count} games: {estimatedHours:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
-            Console.WriteLine();
+            W($"Estimated total time to process {_Games.Count} games: {estimatedHours:F2} hours (based on {pausebetweenabuse/1000.0:F1}s open + {pausebetweenabuse/1000.0:F1}s gap per game)");
+            W();
             StartAbuse();
         }
 
         static void StartAbuse()
         {
-            Console.WriteLine("Starting abuse (auto)...");
+            W("Starting abuse (auto)...");
             int i = 1;
             foreach (var Game in _Games)
             {
                 ProcessStartInfo ps = new ProcessStartInfo("Steam Achievement Abuser App.exe", Game.Id.ToString());
                 ps.CreateNoWindow = true;
                 ps.UseShellExecute = false;
-                Console.WriteLine($"{i}/{_Games.Count()} | {Game.Name}");
+                W($"{i}/{_Games.Count()} | {Game.Name}");
                 using (Process p = Process.Start(ps))
                 {
                     // Ensure the process remains "open" for at least `pausebetweenabuse` ms.
@@ -95,12 +95,12 @@ namespace Steam_Achievement_Abuser_Auto
                 // Wait another `pausebetweenabuse` ms between closing and next launch
                 Thread.Sleep(pausebetweenabuse);
             }
-            Console.WriteLine("Done (auto)!");
+            W("Done (auto)!");
         }
 
         static void AddGames()
         {
-            Console.WriteLine("Downloading base...");
+            W("Downloading base...");
             var pairs = new List<KeyValuePair<uint, string>>();
             byte[] bytes;
             using (var downloader = new WebClient())
@@ -141,6 +141,31 @@ namespace Steam_Achievement_Abuser_Auto
             if (info.Type == "demo" || info.Type == "mod" || info.Type == "junk")
                 return;
             _Games.Add(info);
+        }
+
+        private static string ToTitle(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(input.ToLowerInvariant());
+        }
+
+        private static void W()
+        {
+            W();
+        }
+
+        private static void W(string s)
+        {
+            Console.WriteLine(ToTitle(s));
+        }
+
+        private static void W(string format, params object[] args)
+        {
+            string s;
+            try { s = string.Format(format, args); }
+            catch { s = format; }
+            Console.WriteLine(ToTitle(s));
         }
     }
     internal class GameInfo
