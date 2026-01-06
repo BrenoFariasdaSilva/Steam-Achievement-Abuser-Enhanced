@@ -38,6 +38,7 @@ namespace Steam_Achievement_Abuser_Auto
 
             Console.WriteLine();
             AddGames();
+            _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
             Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
             // Estimate total time: each game is kept open for `pausebetweenabuse` ms and
             // then there's another `pausebetweenabuse` ms between runs => 2 * pausebetweenabuse per game

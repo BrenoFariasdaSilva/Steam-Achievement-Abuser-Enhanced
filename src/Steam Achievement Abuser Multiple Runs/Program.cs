@@ -34,7 +34,7 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
                     return;
             }
             catch (DllNotFoundException)
-            {
+            { 
                 throw;
             }
 
@@ -49,6 +49,7 @@ namespace Steam_Achievement_Abuser_Multiple_Runs
 
                     _Games.Clear();
                     AddGames();
+                    _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
                     Console.WriteLine($"Found {_Games.Count} games. Running automatically...");
                     
                     // Estimate total time: keep each game open for pausebetweenabuse ms, then pausebetweenabuse ms gap

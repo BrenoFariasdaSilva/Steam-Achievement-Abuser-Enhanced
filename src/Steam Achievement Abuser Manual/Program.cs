@@ -38,6 +38,7 @@ namespace Steam_Achievement_Abuser_Manual
             }
             Console.WriteLine();
             AddGames();
+            _Games = _Games.OrderBy(g => g.Name, StringComparer.OrdinalIgnoreCase).ToList();
             Console.WriteLine($"Found {_Games.Count} games...");
             Console.WriteLine("");
             Console.WriteLine("How long should the pause between each game be? (Lower Value = Faster but maybe unstable / Higher Value = Slower but stable (Leave Empty for Default: 5000)");

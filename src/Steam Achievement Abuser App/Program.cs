@@ -54,6 +54,7 @@ namespace Steam_Achievement_Abuser_App
                 Kill();
             List<AchievementDefinition> Achievements = new List<AchievementDefinition>();
             LoadUserGameStatsSchema(out Achievements, (uint)ID);
+            Achievements = Achievements.OrderBy(a => a.Name, StringComparer.OrdinalIgnoreCase).ToList();
             foreach (var Achievement in Achievements)
             {
                 if (!_SteamClient.SteamUserStats.SetAchievement(Achievement.Id, true))
