@@ -11,7 +11,7 @@
 Steam-Achievement-Abuser-Enhanced is a significantly extended and automated fork of the original Steam Achievement Abuser / Steam Achievement Manager workflow.  
 Based on [Steam Achievement Manager](https://github.com/gibbed/SteamAchievementManager), this fork focuses on **automation, reproducibility, safer pacing, cleaner builds, and proper release packaging**.
 
-It automates launching a helper app that triggers achievements for games you own, removing the need to manually open each title while adding multiple execution strategies and build tooling.
+It automates launching a helper app that triggers achievements for games you own, removing the need to manually open each title while adding multiple sequential and parallel execution strategies plus build tooling.
 
 </div>
 
@@ -61,18 +61,23 @@ The code is organized as a Visual Studio/.NET solution with a native-wrapper lib
 
 ### Key Features
 
-- **Three execution modes**
+- **Four execution modes**
   - **Manual**: interactive, configurable pacing before execution.
   - **Auto**: single fully automated run with ETA calculation.
   - **Multiple Runs**: automated looping mode with run counter and fixed cooldown between cycles.
+  - **Multiple Runs Fast**: the same repeating lifecycle, but processes games in parallel batches capped at 30 simultaneous helper processes.
 - **Estimated Total Runtime (ETA)** printed before execution, based on:
   - number of games
-  - open duration per game
-  - cooldown between games
+  - open duration per game or batch
+  - cooldown between games or batches
 - **Safe pacing by default**
   - 5 seconds with the game open
-  - 5 seconds cooldown before the next game
+  - 5 seconds cooldown before the next game or Fast batch
   - Designed to reduce Steam instability when processing large libraries.
+- **Bounded fast processing**
+  - Fast mode keeps the existing helper architecture.
+  - It never intentionally launches more than 30 `Steam Achievement Abuser App.exe` helpers at once.
+  - It can significantly reduce large-library cycle time, but it may place more simultaneous load on Steam and system resources than the sequential modes.
 - **Improved console output**
   - Clear headers
   - Explicit “Enhanced” branding
@@ -101,7 +106,7 @@ The code is organized as a Visual Studio/.NET solution with a native-wrapper lib
 
   - To build: install the **.NET Framework 4.7.1 Developer Pack / Targeting Pack** or use a Visual Studio edition that supports .NET Framework projects. On Windows `dotnet build` can be used if MSBuild and the targeting pack are installed.
 - Make (optional) — the provided `Makefile` automates the build + artifact collection; on Windows you can run it from PowerShell if `make` is available, or build directly with `dotnet build`.
-- Network access (the Auto variants download a small XML index of candidate games).
+- Network access (the automated modes download a small XML index of candidate games).
 
 ## Setup
 
@@ -132,6 +137,7 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 - `SAM.API.dll` (native wrapper)
 - `Steam Achievement Abuser App.exe` (helper app used to trigger achievements for a single game)
 - One of the runner apps:
+  - `Steam Achievement Abuser Multiple Runs Fast.exe` - repeats on a one-hour cycle and processes games in parallel batches capped at 30 helpers
   - `Steam Achievement Abuser Manual.exe` — interactive mode (asks for a pause, prompts before start)
   - `Steam Achievement Abuser Auto.exe` — runs automatically once over your games
   - `Steam Achievement Abuser Multiple Runs.exe` — runs automatically and repeats on a one-hour cycle
@@ -139,7 +145,7 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
 ## Usage
 
 1. Start Steam and make sure you're logged into the account whose achievements you intend to process.
-2. Run one of the runner exes (Manual / Auto / Multiple Runs):
+2. Run one of the runner exes (Manual / Auto / Multiple Runs / Multiple Runs Fast):
 
   - Manual: `Steam Achievement Abuser Manual.exe`
     - Prompts for a pause length (ms). Default is 5000 ms (5s open + 5s gap per game).
@@ -147,17 +153,22 @@ After building you will find the runtime artifacts in `src/bin/Debug/` (or in `d
     - Automatically downloads the games index, computes an ETA, and runs once.
   - Multiple Runs: `Steam Achievement Abuser Multiple Runs.exe`
     - Same as Auto but runs in a continuous loop — it waits one hour between cycles.
+  - Multiple Runs Fast: `Steam Achievement Abuser Multiple Runs Fast.exe`
+    - Same repeating one-hour cycle behavior as Multiple Runs, but processes games concurrently.
+    - Concurrency is explicitly capped at 30 simultaneous helper processes.
+    - Use it for large libraries when your Steam session and machine can tolerate more simultaneous load; use regular Multiple Runs for the conservative sequential variant.
 
-3. The runner apps will print an estimated total time (in hours) before starting, based on the number of games and the configured per-game open/gap duration.
+3. The runner apps will print an estimated total time (in hours) before starting. Sequential modes base ETA on per-game open/gap duration. Fast mode bases ETA on the number of 30-game-or-smaller batches and does not include the separate one-hour cooldown after a completed cycle.
 
-4. The tool launches the helper (`Steam Achievement Abuser App.exe`) for each game, keeps it open for a fixed period (by default 5s), attempts to close it, then waits the same fixed period before starting the next game. This pacing helps avoid Steam instability.
+4. The sequential modes launch the helper (`Steam Achievement Abuser App.exe`) for each game, keep it open for a fixed period (by default 5s), attempt to close it, then wait the same fixed period before starting the next game. Fast mode launches up to 30 helpers together, holds the batch processing window, closes only the helpers it launched, waits the same cooldown, then proceeds to the next batch. This pacing helps avoid Steam instability, but Fast mode is intentionally less conservative than the sequential runner.
 
 ## Results
 
 When the run completes the helper app will have attempted to unlock achievements for each processed game. Results are visible inside Steam (achievements unlocked). Keep the following in mind:
 
 - This tool modifies local achievement state — use it only on accounts you control and where this behavior is acceptable.
-- The default pacing (5s open + 5s gap) is conservative to avoid triggering Steam crashes when processing many games; you can adjust it in Manual mode.
+- The default sequential pacing (5s open + 5s gap) is conservative to avoid triggering Steam crashes when processing many games; you can adjust it in Manual mode.
+- Fast mode keeps a 5s processing window plus 5s cooldown per batch. Its 30-helper cap is intended to leave headroom below higher simultaneous-session limits, not to guarantee that every account, client, or system will tolerate that load.
 - If you package artifacts for distribution, include `SAM.API.dll` plus the chosen runner exe(s).
 
 ## Releases
@@ -165,7 +176,8 @@ When the run completes the helper app will have attempted to unlock achievements
 This project includes a packaging step that produces compressed release artifacts under the `releases/` directory. The packaging creates two logical groups of archives:
 
 - Binary bundles (executables):
-  - `Steam-Achievement-Abuser-Enhanced-Executables.zip` — A ZIP archive containing the runtime artifacts staged under the top-level folder `Steam Achievement Abuser Enhanced`. Includes `SAM.API.dll` and the helper/runner executables (App, Manual, Auto, Multiple Runs).
+  - Binary bundles include `SAM.API.dll` and the helper/runner executables: App, Manual, Auto, Multiple Runs, and Multiple Runs Fast.
+  - `Steam-Achievement-Abuser-Enhanced-Executables.zip` — A ZIP archive containing the runtime artifacts staged under the top-level folder `Steam Achievement Abuser Enhanced`. Includes `SAM.API.dll` and the helper/runner executables (App, Manual, Auto, Multiple Runs, Multiple Runs Fast).
   - `Steam-Achievement-Abuser-Enhanced-Executables.tar.gz` — A gzipped tar of the same staged folder (created when `tar`/`gzip` are available).
   - `Steam-Achievement-Abuser-Enhanced-Executables.7z` / `.rar` — Optional 7z or RAR archives created only if the respective tools (`7z`, `rar`) are installed on the machine performing the packaging.
 
