@@ -32,10 +32,31 @@ It automates launching a helper app that triggers achievements for games you own
 </div>
 
 <div align="center">
-  
-![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/4c88886ca92b3212cac1f69aa8d8240584ed7e30.svg "Repobeats analytics image")
+
+![CI](https://img.shields.io/github/actions/workflow/status/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/ci.yml?branch=master)
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/master)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.svg)
+[![GitHub Contributors](https://img.shields.io/github/contributors/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/graphs/contributors)
+[![GitHub Created At](https://img.shields.io/github/created-at/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+[![GitHub Repository Size](https://img.shields.io/github/repo-size/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
+[![Open Issues](https://img.shields.io/github/issues/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/issues?q=is%3Aissue+is%3Aclosed)
+[![Open Pull Requests](https://img.shields.io/github/issues-pr/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/pulls)
+[![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/pulls?q=is%3Apr+is%3Aclosed)
+[![Monthly Commits](https://img.shields.io/github/commit-activity/m/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/master)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/commits)
+[![Merged PRs](https://img.shields.io/github/issues-search/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced?query=is%3Apr%20is%3Amerged&label=merged%20PRs&color=blue)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/pulls?q=is%3Apr+is%3Amerged)
+![GitHub Primary Language](https://img.shields.io/badge/language-C%23-3b82f6)
+
+![Repobeats Statistics](https://repobeats.axiom.co/api/embed/4c88886ca92b3212cac1f69aa8d8240584ed7e30.svg)
 
 </div>
+
 
 ## Table of Contents
 - [Steam-Achievement-Abuser-Enhanced. ](#steam-achievement-abuser-enhanced-)
