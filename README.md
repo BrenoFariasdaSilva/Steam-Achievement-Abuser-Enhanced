@@ -30,7 +30,6 @@ It automates launching a helper app that triggers achievements for games you own
 ![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced.svg)
 [![GitHub Contributors](https://img.shields.io/github/contributors/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/graphs/contributors)
 [![GitHub Created At](https://img.shields.io/github/created-at/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
-[![GitHub Repository Size](https://img.shields.io/github/repo-size/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)
 [![Open Issues](https://img.shields.io/github/issues/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/issues?q=is%3Aissue+is%3Aclosed)
 [![Open Pull Requests](https://img.shields.io/github/issues-pr/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced)](https://github.com/BrenoFariasdaSilva/Steam-Achievement-Abuser-Enhanced/pulls)
